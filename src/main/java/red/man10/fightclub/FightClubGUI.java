@@ -7,6 +7,7 @@ import org.bukkit.enchantments.Enchantment;
 
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.util.io.BukkitObjectInputStream;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -119,7 +120,7 @@ public class FightClubGUI {
             return;
         }
         if (e.getView().getTitle().equals("§c§l         ベットメニュー")) {
-            if (e.getCurrentItem().getType() == Material.LEGACY_SKULL_ITEM) {
+            if (e.getCurrentItem().getType() == Material.PLAYER_HEAD) {
                 priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                 e.setCancelled(true);
             } else {
@@ -478,7 +479,7 @@ public class FightClubGUI {
         ItemStack cancel = new ItemStack(Material.REDSTONE_BLOCK, 1);
         ItemStack Accept = new ItemStack(Material.EMERALD_BLOCK, 1);
 
-        ItemStack skull = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(betp);
         meta.setOwner(betp);
@@ -575,13 +576,13 @@ public class FightClubGUI {
         FightClub.PlayerInformation info = plugin.fighters.get(0);
         FightClub.PlayerInformation info1 = plugin.fighters.get(1);
 
-        ItemStack skull = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(info.name);
         meta.setOwner(info.name);
         skull.setItemMeta(meta);
 
-        ItemStack skull1 = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
+        ItemStack skull1 = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta1 = (SkullMeta) skull1.getItemMeta();
         meta1.setDisplayName(info1.name);
         meta1.setOwner(info1.name);
