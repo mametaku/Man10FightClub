@@ -1901,7 +1901,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
-        if (e.getClickedBlock().getType() == Material.LEGACY_SIGN_POST || e.getClickedBlock().getType() == Material.LEGACY_WALL_SIGN) {
+        if (e.getClickedBlock().getType() == Material.OAK_SIGN || e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
                 Object o = e.getClickedBlock().getState();
                 if((o instanceof  Sign) == false){
                     return;
