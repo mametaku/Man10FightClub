@@ -714,6 +714,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             //      装備を保存
            // command("mkit push "+fi.name );
             //      キットを選択
+            Bukkit.broadcastMessage("mkit set " +fi.name + " " + selectedKit);
             command("mkit set "+fi.name + " " + selectedKit);
         }
 
@@ -2158,7 +2159,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         for (BlockFace f : BlockFace.values()) {
-            if (b.getRelative(f).getType() == Material.LEGACY_WALL_SIGN) {
+            if (b.getRelative(f).getType().name().contains("SIGN")) {
                 for(int i = 0;i < kitSigns.size();i++) {
                     Location loc = kitSigns.get(i);
                     if(loc.getX() == b.getX() && loc.getY() == b.getY() && loc.getZ() == b.getZ()){
