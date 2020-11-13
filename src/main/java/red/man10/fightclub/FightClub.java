@@ -20,6 +20,7 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffectType;
@@ -30,6 +31,9 @@ import red.man10.*;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import static red.man10.fightclub.FightClub.Status.*;
 
 
@@ -1682,7 +1686,14 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      死亡者をよみがえらせTPさせる
 
-        p.spigot().respawn();
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                p.getInventory().clear();
+                p.spigot().respawn();
+            }
+        }.runTaskLater(this, 1L);
         resetPlayerStatus(p);
         tpLobby(p);
 
@@ -1696,7 +1707,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
 
         }.runTaskLater(this,20);
-        Bukkit.broadcastMessage(getAliveFighterCount()+"");
         ////////////////////////////////////
         //      最後ならゲームを終了する
         ////////////////////////////////////
@@ -2375,7 +2385,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     */
 
-
     public void onItemDrop (PlayerDropItemEvent e) {
         Player p = e.getPlayer();
 
@@ -2403,6 +2412,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     }
+
 
     //      エンティティを消す
     void clearEntity(){
