@@ -1689,11 +1689,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                e.getDrops().remove(true);
                 p.getInventory().clear();
                 e.getEntity().spigot().respawn();
             }
-        }.runTaskLater(this, 1);
+        }.runTaskLater(this, 2);
         resetPlayerStatus(p);
         tpLobby(p);
 
