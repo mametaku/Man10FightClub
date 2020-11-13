@@ -789,7 +789,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void resetPlayerStatus(Player p)
         {
             p.setFireTicks(0);
-            p.getInventory().clear();
             if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
             {
                 p.removePotionEffect(PotionEffectType.BLINDNESS);
@@ -1657,7 +1656,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return;
         }
 
-        Player p = (Player)e.getEntity();
+        Player p = (Player) e.getEntity();
         //      対象アリーナでなければ
         if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
             return;
@@ -1670,6 +1669,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         PlayerInformation f = fighters.get(index);      //  死亡者
+
         fighters.get(index).isDead = true;
 
         serverMessage("死亡!!!:"+p.getDisplayName());
@@ -1681,12 +1681,13 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //      死亡者をよみがえらせTPさせる
+
         p.spigot().respawn();
         resetPlayerStatus(p);
         tpLobby(p);
 
         //      遅延実行で装備をリセット
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+        new BukkitRunnable() {
             public void run() {
                 resetPlayerStatus(p);
                 command("mkit pop " + p.getName());
@@ -1694,8 +1695,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 command("mkit pop " + pa.getName());
             }
 
-        }, 20);
-
+        }.runTaskLater(this,20);
+        Bukkit.broadcastMessage(getAliveFighterCount()+"");
         ////////////////////////////////////
         //      最後ならゲームを終了する
         ////////////////////////////////////
