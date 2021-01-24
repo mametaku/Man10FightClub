@@ -275,7 +275,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      プロモード中はプロしか登録できない
         if (mode == MFCModes.Normal) {
-            if (prolist.find(uuid.toString()) == -1) {
+            if (prolist.find(uuid.toString()) != -1) {
                 s.sendMessage("プロは通常モードに参加できません");
                 return -7;
             }
