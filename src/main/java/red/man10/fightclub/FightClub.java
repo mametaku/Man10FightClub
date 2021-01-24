@@ -138,18 +138,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
     /*
-    //      ブラックリスト
-    ArrayList<UUID> blacklist = new ArrayList<UUID>();
-    //      ホワイトリスト
-    ArrayList<UUID> whitelist = new ArrayList<UUID>();
+    //      デニーリスト
+    ArrayList<UUID> denylist = new ArrayList<UUID>();
+    //      アローリスト
+    ArrayList<UUID> allowlist = new ArrayList<UUID>();
     //     Pro
     ArrayList<UUID> prolist = new ArrayList<UUID>();
-    Boolean enbaleBlackList = true;
-    Boolean enableWhitelist = true;
+    Boolean enbaleDenylist = true;
+    Boolean enableAllowlist = true;
     */
 
-    FightClubList whitelist = null;
-    FightClubList blacklist = null;
+    FightClubList allowlist = null;
+    FightClubList denylist = null;
     FightClubList prolist = null;
 
     public void setMFCMode(CommandSender sender, MFCModes mode) {
@@ -259,7 +259,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        if (blacklist.find(uuid.toString()) != -1) {
+        if (denylist.find(uuid.toString()) != -1) {
             s.sendMessage("ブラックリストに登録されているため参加できません");
             return -5;
         }
@@ -284,7 +284,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      プロモード中はプロしか登録できない
         if (mode == MFCModes.WhiteList) {
-            if (whitelist.find(uuid.toString()) == -1) {
+            if (allowlist.find(uuid.toString()) == -1) {
                 s.sendMessage("あなたはホワイトリストに追加されていません");
                 return -7;
             }
@@ -325,7 +325,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             if (play >= newbiePlayableCount && playerInfo.death != 0) {
                 double kdr = (double) playerInfo.kill / (double) playerInfo.death;
                 if (kdr < registerKDRLimit) {
-                    if (whitelist.find(p.getUniqueId().toString()) != -1) {
+                    if (allowlist.find(p.getUniqueId().toString()) != -1) {
 
                         serverMessage(playerInfo.name + "は、弱すぎて参加資格がないが、今回は特別に許された。");
                         waiters.add(playerInfo);
@@ -1539,8 +1539,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("エントリ金額:" + this.entryPrice);
         updateSidebar();
 
-        whitelist = new FightClubList("whitelist");
-        blacklist = new FightClubList("blacklist");
+        allowlist = new FightClubList("allowlist");
+        denylist = new FightClubList("denylist");
         prolist = new FightClubList("prolist");
 
     }

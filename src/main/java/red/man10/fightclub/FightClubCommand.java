@@ -2,14 +2,12 @@ package red.man10.fightclub;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
-import java.util.logging.Filter;
 
 /**
  * Created by takatronix on 2017/03/01.
@@ -390,8 +388,8 @@ public class FightClubCommand  implements CommandExecutor {
         //////////////////////////////////
         ///         Bet
         //////////////////////////////////
-        if( args[0].equalsIgnoreCase("whitelist") ||
-            args[0].equalsIgnoreCase("blacklist") ||
+        if( args[0].equalsIgnoreCase("allowlist") ||
+            args[0].equalsIgnoreCase("denylist") ||
             args[0].equalsIgnoreCase("prolist")
 
                 ) {
@@ -412,11 +410,11 @@ public class FightClubCommand  implements CommandExecutor {
 
 
         FightClubList list = null;
-        if(args[0].equalsIgnoreCase("whitelist")){
-            list = plugin.whitelist;
+        if(args[0].equalsIgnoreCase("allowlist")){
+            list = plugin.allowlist;
         }
-        if(args[0].equalsIgnoreCase("blacklist")){
-            list = plugin.blacklist;
+        if(args[0].equalsIgnoreCase("denylist")){
+            list = plugin.denylist;
         }
         if(args[0].equalsIgnoreCase("prolist")){
             list = plugin.prolist;
@@ -511,12 +509,12 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");
         p.sendMessage("-----------ホワイトリスト・ブラックリスト・プロコマンド-----------");
-        p.sendMessage("§c/mfc whitelist list - ホワイリスト表示");
-        p.sendMessage("§c/mfc whitelist add [username] - ホワイトリスト追加");
-        p.sendMessage("§c/mfc whitelist delete [username] - ホワイトリスト削除");
-        p.sendMessage("§c/mfc blacklist list - ブラックリスト表示");
-        p.sendMessage("§c/mfc blacklist add [username] - ブラックリスト追加");
-        p.sendMessage("§c/mfc blacklist delete [username] - ブラックリスト削除");
+        p.sendMessage("§c/mfc allowlist list - ホワイリスト表示");
+        p.sendMessage("§c/mfc allowlist add [username] - ホワイトリスト追加");
+        p.sendMessage("§c/mfc allowlist delete [username] - ホワイトリスト削除");
+        p.sendMessage("§c/mfc denylist list - ブラックリスト表示");
+        p.sendMessage("§c/mfc denylist add [username] - ブラックリスト追加");
+        p.sendMessage("§c/mfc denylist delete [username] - ブラックリスト削除");
         p.sendMessage("§c/mfc prolist list - プロリスト表示");
         p.sendMessage("§c/mfc prolist add [username] - プロリスト追加");
         p.sendMessage("§c/mfc prolist delete [username] - プロリスト削除");
