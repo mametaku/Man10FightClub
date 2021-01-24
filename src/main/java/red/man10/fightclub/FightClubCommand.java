@@ -508,13 +508,13 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");
-        p.sendMessage("-----------ホワイトリスト・ブラックリスト・プロコマンド-----------");
-        p.sendMessage("§c/mfc allowlist list - ホワイリスト表示");
-        p.sendMessage("§c/mfc allowlist add [username] - ホワイトリスト追加");
-        p.sendMessage("§c/mfc allowlist delete [username] - ホワイトリスト削除");
-        p.sendMessage("§c/mfc denylist list - ブラックリスト表示");
-        p.sendMessage("§c/mfc denylist add [username] - ブラックリスト追加");
-        p.sendMessage("§c/mfc denylist delete [username] - ブラックリスト削除");
+        p.sendMessage("-----------アローリスト・デニーリスト・プロコマンド-----------");
+        p.sendMessage("§c/mfc allowlist list - アローリスト表示");
+        p.sendMessage("§c/mfc allowlist add [username] - アローリスト追加");
+        p.sendMessage("§c/mfc allowlist delete [username] - アローリスト削除");
+        p.sendMessage("§c/mfc denylist list - デニーリスト表示");
+        p.sendMessage("§c/mfc denylist add [username] - デニーリスト追加");
+        p.sendMessage("§c/mfc denylist delete [username] - デニーリスト削除");
         p.sendMessage("§c/mfc prolist list - プロリスト表示");
         p.sendMessage("§c/mfc prolist add [username] - プロリスト追加");
         p.sendMessage("§c/mfc prolist delete [username] - プロリスト削除");
@@ -522,7 +522,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc off - MFC停止");
         p.sendMessage("§c/mfc on - MFC開始(通常モード)");
         p.sendMessage("§c/mfc free - MFC開始(フリーモード)");
-        p.sendMessage("§c/mfc whitelist - MFC開始(ホワイトリストモード)");
+        p.sendMessage("§c/mfc whitelist - MFC開始(アローリストモード)");
         p.sendMessage("§c/mfc pro - MFC開始(プロモード)");
 
 

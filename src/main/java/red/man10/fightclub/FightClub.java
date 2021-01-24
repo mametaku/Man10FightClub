@@ -77,7 +77,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Off,
         Free,           //  自由に遊べる、通知はしない
         Normal,         //  通常のモード（グローバル通知はしない
-        WhiteList,      //  ホワイトリスト
+        WhiteList,      //  アローリスト
         Pro             //  グローバル通知あり
     }
 
@@ -176,7 +176,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
         if (mode == MFCModes.WhiteList) {
-            title = "MFC ホワイトリスト";
+            title = "MFC アローリスト";
             subTitle = "参加資格がある者のみ参加できます";
             enableMFC(sender, true);
         }
@@ -260,7 +260,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if (denylist.find(uuid.toString()) != -1) {
-            s.sendMessage("ブラックリストに登録されているため参加できません");
+            s.sendMessage("デニーリストに登録されているため参加できません");
             return -5;
         }
 
@@ -285,7 +285,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      プロモード中はプロしか登録できない
         if (mode == MFCModes.WhiteList) {
             if (allowlist.find(uuid.toString()) == -1) {
-                s.sendMessage("あなたはホワイトリストに追加されていません");
+                s.sendMessage("あなたはアローリストに追加されていません");
                 return -7;
             }
         }
@@ -336,7 +336,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     }
 
 
-                    //s.sendMessage("ブラックリストに登録されているため参加できません");
+                    //s.sendMessage("デニーリストに登録されているため参加できません");
                     s.sendMessage(playerInfo.name + "は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:" + registerKDRLimit + "以上が最低条件です");
                     return -4;
                 }
