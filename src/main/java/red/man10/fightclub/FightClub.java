@@ -28,6 +28,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 import red.man10.LifeBar;
+import red.man10.MFCAutoRunner;
 import red.man10.TitleBar;
 import red.man10.VaultManager;
 
@@ -66,6 +67,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     FightClubData data = null;
 
+    public static boolean autoRunnerAvailable = false;
+
 
     //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
@@ -81,13 +84,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         Pro             //  グローバル通知あり
     }
 
-    MFCModes mode;
+    public static MFCModes mode;
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
         Closed,                 //  開催前
         Entry,                  //  募集中
-        Opened,                 //  予想の受付開
+        Opened,                 //  予想の受付開始
         Fighting,               //  対戦中
     }
 
@@ -123,7 +126,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double bet;             //  掛け金
     }
 
-    Status currentStatus = Entry;
+    public static Status currentStatus = Entry;
 
     //      対戦まちリスト
     ArrayList<PlayerInformation> waiters = new ArrayList<PlayerInformation>();
@@ -1488,6 +1491,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         showInfoBarToPlayer();
 
+        MFCAutoRunner autoRunner = new MFCAutoRunner(this);
+        autoRunnerAvailable = true;
+        autoRunner.enableAutoRunner();
     }
 
     void showInfoBarToPlayer() {
@@ -1552,6 +1558,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("Disabled");
+        autoRunnerAvailable = false;
         cancelGame();
         lifebar.clearBar();
         lifebar.clearInfoBar();
