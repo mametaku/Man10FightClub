@@ -15,7 +15,7 @@ public class MFCAutoRunner {
         this.plugin = plugin;
     }
 
-    private boolean isEnabled = false;
+    public static boolean isEnabled = false;
 
     private void startFree() {
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc free");
@@ -37,7 +37,7 @@ public class MFCAutoRunner {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             while (autoRunnerAvailable) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000 * 60 * 10);
                     if (cal.get(Calendar.HOUR_OF_DAY) == 18) { //18時のとき
                         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) { // 土曜日のとき
                             if (FightClub.mode == FightClub.MFCModes.Off) { //MFCがOffのとき
@@ -48,7 +48,7 @@ public class MFCAutoRunner {
                                         stopMFC();
                                         return;
                                     }else{
-                                        Thread.sleep(1000);
+                                        Thread.sleep(1000 * 10);
                                     }
                                 }
                             } else {
@@ -63,11 +63,11 @@ public class MFCAutoRunner {
                                         stopMFC();
                                         return;
                                     }else{
-                                        Thread.sleep(1000);
+                                        Thread.sleep(1000 * 10);
                                     }
                                 }
                             } else {
-                                Thread.sleep(1000 * 60 * 60); // もし18時なってMFCが開催されていたらその日はもう開催しない
+                                Thread.sleep(1000 * 60 * 60 * 2); // もし18時なってMFCが開催されていたらその日はもう開催しない
                             }
                         }
                     }

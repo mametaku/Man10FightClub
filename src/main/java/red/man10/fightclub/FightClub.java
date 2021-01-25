@@ -1538,6 +1538,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.newbiePlayableCount = getConfig().getInt("newbiePlayableCount", 10);
         this.registerKDRLimit = getConfig().getDouble("registerKDRLimit", 0.2);
 
+        MFCAutoRunner.isEnabled = getConfig().getBoolean("auto-running");
+
         serverMessage("賞金比率:" + this.prize);
         serverMessage("ニュービープレイ可能回数:" + this.newbiePlayableCount);
         serverMessage("KDRリミット:" + this.registerKDRLimit);
