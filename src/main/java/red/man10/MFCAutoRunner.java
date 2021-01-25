@@ -18,15 +18,20 @@ public class MFCAutoRunner {
     public static boolean isEnabled = false;
 
     private void startFree() {
-        Bukkit.getServer().broadcastMessage("");
+        Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
+        Bukkit.getServer().broadcastMessage("§b§l§nMFCの練習試合を開催します！ ぜひご参加ください！");
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc free");
     }
 
     private void startNormal() {
+        Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
+        Bukkit.getServer().broadcastMessage("§c§l§kXXXXX §r§c§l§n今宵はMFCの決戦だ！ 集え！戦士たちよ！ §c§l§kXXXXX");
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc on");
     }
 
     private void stopMFC() {
+        Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
+        Bukkit.getServer().broadcastMessage("§l今日はここまで！ また次回参加してくれ！");
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc off");
     }
 
