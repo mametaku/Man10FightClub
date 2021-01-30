@@ -13,6 +13,7 @@ registerKDRLimit: 0.2
 
 auto-running:
   enabled: true
+  end-message: "&l今日はここまで！ また次回参加してくれ！"
   schedule:
     # SUN:1 ~ SUT:7
     # MODE: free, normal, allowlist, pro
@@ -21,8 +22,10 @@ auto-running:
       START: "18:00:00"
       END: "19:00:00"
       MODE: "free"
+      STARTMESSAGE: "&b&l&nMFCの練習試合を開催します！ ぜひご参加ください！"
     - 2
       WEEK: 1
       START: "18:00:00"
       END: "20:00:00"
       MODE: "normal"
+      STARTMESSAGE: "&c&l&kXXXXX &r&c&l&n今宵はMFCの決戦だ！ 集え！戦士たちよ！ &c&l&kXXXXX"
