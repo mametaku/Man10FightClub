@@ -24,6 +24,10 @@ public class MFCAutoRunner {
 
     public static String endMessage;
 
+    // モードと開始時のメッセージのメンバ変数
+    public FightClub.MFCModes mode = FightClub.MFCModes.Normal;
+    public String startMessage = "&b&l&nMFCだよ！ 全員酒豪！！";
+
     private void commandMFC(String message, String mode) {
         Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         Bukkit.getServer().broadcastMessage(message.replaceAll("&", "§"));
@@ -54,6 +58,8 @@ public class MFCAutoRunner {
                         if (delay < 0) {
                             return -1;
                         }
+
+                        if ()
                         return delay;
                     }
                 }
