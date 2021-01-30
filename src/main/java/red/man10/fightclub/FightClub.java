@@ -1547,6 +1547,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             schedule.append(getConfig().getString("auto-running.schedule." + i + ".START") + ":");
             schedule.append(getConfig().getString("auto-running.schedule." + i + ".END"));
             schedule.append(getConfig().getString("auto-running.schedule." + i + ".MODE"));
+            schedule.append(getConfig().getString("auto-running.schedule." + i + ".STARTMESSAGE"));
             MFCAutoRunner.runnerSchedules.add(schedule.toString());
         }
 
