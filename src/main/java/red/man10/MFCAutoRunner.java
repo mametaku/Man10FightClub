@@ -20,25 +20,23 @@ public class MFCAutoRunner {
     public static boolean isEnabled = false;
 
     public static List<String> runnerSchedules = new ArrayList<>();
+    private List<String[]> arrayedSchedules = arraySchedule();
 
-    FightClub.MFCModes mode = FightClub.MFCModes.Off;
+    public static String endMessage;
 
-    private void startFree() {
+    private void commandMFC(String message, String mode) {
         Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
-        Bukkit.getServer().broadcastMessage("§b§l§nMFCの練習試合を開催します！ ぜひご参加ください！");
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc free");
+        Bukkit.getServer().broadcastMessage(message.replaceAll("&", "§"));
+        // Bukkit.getServer().broadcastMessage("§l今日はここまで！ また次回参加してくれ！");
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc " + mode);
     }
 
-    private void startNormal() {
-        Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
-        Bukkit.getServer().broadcastMessage("§c§l§kXXXXX §r§c§l§n今宵はMFCの決戦だ！ 集え！戦士たちよ！ §c§l§kXXXXX");
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc on");
-    }
-
-    private void stopMFC() {
-        Bukkit.getServer().broadcastMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
-        Bukkit.getServer().broadcastMessage("§l今日はここまで！ また次回参加してくれ！");
-        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "mfc off");
+    private List<String[]> arraySchedule() {
+        List<String[]> arrayed = new ArrayList<>();
+        for (String runnerSchedule : runnerSchedules) {
+            arrayed.add(runnerSchedule.split(":"));
+        }
+        return arrayed;
     }
 
     private int isMfcTime() {
@@ -82,7 +80,7 @@ public class MFCAutoRunner {
                         Thread.sleep(time * 60);
                         while (true) {
                             if (FightClub.currentStatus == FightClub.Status.Entry) { // 試合をやっているか確認
-                                stopMFC();
+                                commandMFC(, "off");
                                 return;
                             } else {
                                 Thread.sleep(1000 * 10);
